@@ -1,6 +1,6 @@
 async function downloadTxtFile() {
     const filename = document.getElementById("FileName").value + ".html";
-    const CustomURL = document.getElementById("GameURL").value;
+    const CustomURL = "https://"+ document.getElementById("GameURL").value;
     const TabName = document.getElementById("TabName").value;
     try {
         const response = await fetch("template.txt");
