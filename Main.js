@@ -24,4 +24,5 @@ function downloadTxtFile() {
     downloadLink.click();
     document.body.removeChild(downloadLink);
     URL.revokeObjectURL(downloadLink.href);
+    alert(`File "${filename}" has been generated and downloaded!`);
 }
