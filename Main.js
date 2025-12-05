@@ -1,5 +1,5 @@
 async function downloadTxtFile() {
-    const filename = document.getElementById("FileName").value;
+    const filename = document.getElementById("FileName").value + ".html";
     const CustomURL = document.getElementById("GameURL").value;
     const TabName = document.getElementById("TabName").value;
     try {
@@ -12,7 +12,7 @@ async function downloadTxtFile() {
             .replace('[GAMEURL]', CustomURL)
             .replace('[TABNAME]', TabName)
 
-        const blob = new Blob([templateContent], { type: 'text/plain' });
+        const blob = new Blob([templateContent], { type: 'text/html' });
 
         const downloadLink = document.createElement('a');
         downloadLink.href = URL.createObjectURL(blob);
