@@ -10,7 +10,7 @@ function goToNextPage()
 function readInput()
 {
     const inputElement = document.getElementById("userInput")
-    const inputValue = inputElement.nodeValue;
+    const inputValue = inputElement.inputValue;
     document.getElementById("abutton").textContent = 
     "You entered: " + inputValue;
 }
