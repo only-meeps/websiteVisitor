@@ -108,9 +108,9 @@ function UpdateGameList(list1, list2){
 var LoginCallback = function (result, error) {
     if (result !== null) {
         
-        DebugLog("Signed in as user " + Playfab.CustomId);
+        DebugLog("Signed in as user " + PlayFab.CustomId);
     } else if (error !== null) {
-        DebugLog("Failed to sign into playfab:\n" +PlayFab.GenerateErrorReport(error));
+        DebugLog("Failed to sign into PlayFab:\n" +PlayFab.GenerateErrorReport(error));
     }
 }
 Init();
