@@ -112,3 +112,4 @@ var LoginCallback = function (result, error) {
         DebugLog("Failed to sign into playfab:\n" +PlayFab.GenerateErrorReport(error));
     }
 }
+Init();
