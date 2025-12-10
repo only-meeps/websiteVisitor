@@ -90,7 +90,7 @@ function PlayFabSignIn(UUID){
     PlayFab.ClientApi.LoginWithCustomID(loginRequest, LoginCallback);
 }
 function UpdateGameList(list1, list2){
-    PlayFabClientAPI.UpdateUserData({
+    PlayFab.ClientApi.UpdateUserData({
         Data: {
             "Game List": list1,
             "URL List":list2,
@@ -108,7 +108,7 @@ function UpdateGameList(list1, list2){
 var LoginCallback = function (result, error) {
     if (result !== null) {
         //why is this not working :(
-        //DebugLog("Signed in as user " + PlayFab.CustomId);
+        DebugLog("Signed in as user " + PlayFab.CustomId);
     } else if (error !== null) {
         DebugLog("Failed to sign into PlayFab:\n" +PlayFab.GenerateErrorReport(error));
     }
