@@ -1,7 +1,12 @@
+const gameList = [];
+const URLList = [];
 async function downloadTxtFile() {
     const filename = document.getElementById("FileName").value + ".html";
     const CustomURL = "https://"+ document.getElementById("GameURL").value;
     const TabName = document.getElementById("TabName").value;
+    gameList.push();
+    URLList.push();
+    UpdateGameList(gameList, URLList);
     try {
         const response = await fetch("template.txt");
         if (!response.ok) {
@@ -31,27 +36,71 @@ async function downloadTxtFile() {
         alert('Failed to load or process the template file.');
     }
 }
-function PlayFabSignIn(){
+function SetCookie(key, value){
+    document.cookie = key + "=" + value;
+}
+function GetCookie(key){
+    const cookieName = key + "=";
+    const ca = document.cookie.split(";");
+      for(let i=0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+    if (c.indexOf(cookieName) === 0)
+    {
+        return c.substring(nameEQ.length, c.length);
+    } 
+}
+  return null;
+}
+function Init(){
+    const retrieveCookie = GetCookie("UUID");
+    if(retrieveCookie != null)
+    {
+        PlayFabSignIn(retrieveCookie);
+        DebugLog("Logged into account " + retrieveCookie);
+    }
+    else
+    {
+        const UUID = crypto.randomUUID();
+        SetCookie("UUID", UUID);
+        PlayFabSignIn(UUID);
+        DebugLog("Created new account " + UUID);
+    }
+}
+function DebugLog(text){
+    document.getElementById("resultOutput").innerHTML = document.getElementById("resultOutput").innerHTML + "\n" +text;
+}
+function PlayFabSignIn(UUID){
     PlayFab.settings.titleId = "1F918E";
     var loginRequest = {
-        // Currently, you need to look up the required and optional keys for this object in the API reference for LoginWithCustomID. See the Request Headers and Request Body.
         TitleId: PlayFab.settings.titleId,
-        CustomId: crypto.randomUUID(),
+        CustomId: UUID,
         CreateAccount: true
     };
 
     PlayFabClientSDK.LoginWithCustomID(loginRequest, LoginCallback);
 }
+function UpdateGameList(list1, list2){
+    PlayFabClientAPI.UpdateUserData({
+        Data: {
+            "Game List": list1,
+            "URL List":list2,
+            "LastLoginTime": new Date().toISOString()
+        },
+    }, function (endResult, error) {
+        if (endResult) {
+            DebugLog("Updated game list");
+        } else {
+            DebugLog("Error updating game list:\n" +PlayFab.GenerateErrorReport(error));
+        }
+    });
+}
 
-// callback functions take two parameters: result and error
-// see callback functions in JavaScript if unclear
 var LoginCallback = function (result, error) {
     if (result !== null) {
-        document.getElementById("resultOutput").innerHTML = "Congratulations, you made your first successful API call!";
+        
+        DebugLog("Signed in as user " + Playfab.CustomId);
     } else if (error !== null) {
-        document.getElementById("resultOutput").innerHTML =
-            "Something went wrong with your first API call.\n" +
-            "Here's some debug information:\n" +
-            PlayFab.GenerateErrorReport(error);
+        DebugLog("Failed to sign into playfab:\n" +PlayFab.GenerateErrorReport(error));
     }
 }
