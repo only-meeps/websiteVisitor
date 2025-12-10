@@ -1,12 +1,20 @@
 const gameList = [];
 const URLList = [];
+var PlayFabInit = false;
 async function downloadTxtFile() {
     const filename = document.getElementById("FileName").value + ".html";
     const CustomURL = "https://"+ document.getElementById("GameURL").value;
     const TabName = document.getElementById("TabName").value;
-    gameList.push();
-    URLList.push();
-    UpdateGameList(gameList, URLList);
+    if(PlayFabInit)
+    {
+            gameList.push();
+        URLList.push();
+        UpdateGameList(gameList, URLList);
+    }
+    else
+    {
+        DebugLog("Game list unable to push. Error: PlayFab Offline!");
+    }
     try {
         const response = await fetch("template.txt");
         if (!response.ok) {
@@ -109,6 +117,7 @@ var LoginCallback = function (result, error) {
     if (result !== null) {
         //why is this not working :(
         DebugLog("Signed in as user " + PlayFab.ClientApi.CustomId);
+        PlayFabInit = true;
     } else if (error !== null) {
         DebugLog("Failed to sign into PlayFab:\n" +PlayFab.GenerateErrorReport(error));
     }
