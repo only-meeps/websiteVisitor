@@ -1,4 +1,5 @@
 <script src="Main.js"></script>
+<script type="text/javascript" src="https://download.playfab.com/PlayFabClientApi.js"></script>
 <h1>Game file generator</h1>
 <h2>By only-meeps</h2>
 <input type="text" id="GameURL" placeholder="Game URL">
@@ -6,3 +7,7 @@
 <input type="text" id="FileName" placeholder="File Name">
 <button onclick="downloadTxtFile()">Download!</button>
 <p id="downloadButton"></p>
+<button onclick="PlayFabSignIn()">Login to playfab!</button>
+<p id="signinButton"></p>
+Result:<br />
+<textarea id="resultOutput" cols="60" rows="5"></textarea><br />
