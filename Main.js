@@ -55,6 +55,7 @@ function GetCookie(key){
 function Start()
 {
     const retrieveCookie = GetCookie("UUID");
+    PlayFab.settings.titleId = "1F918E";
     if(retrieveCookie != null)
     {
         PlayFabSignIn(retrieveCookie);
@@ -79,14 +80,14 @@ function DebugLog(text){
     document.getElementById("resultOutput").innerHTML = document.getElementById("resultOutput").innerHTML + "\n" +text;
 }
 function PlayFabSignIn(UUID){
-    PlayFab.settings.titleId = "1F918E";
+
     var loginRequest = {
         TitleId: PlayFab.settings.titleId,
         CustomId: UUID,
         CreateAccount: true
     };
 
-    PlayFabClientAPI.LoginWithCustomID(loginRequest, LoginCallback);
+    PlayFab.ClientApi.LoginWithCustomID(loginRequest, LoginCallback);
 }
 function UpdateGameList(list1, list2){
     PlayFabClientAPI.UpdateUserData({
