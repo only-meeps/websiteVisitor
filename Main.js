@@ -47,7 +47,7 @@ function GetCookie(key){
     while (c.charAt(0) === ' ') c = c.substring(1, c.length);
     if (c.indexOf(cookieName) === 0)
     {
-        return c.substring(nameEQ.length, c.length);
+        return c.substring(key.length, c.length);
     } 
 }
   return null;
