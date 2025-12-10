@@ -52,7 +52,8 @@ function GetCookie(key){
 }
   return null;
 }
-function Init(){
+function Start()
+{
     const retrieveCookie = GetCookie("UUID");
     if(retrieveCookie != null)
     {
@@ -65,6 +66,13 @@ function Init(){
         SetCookie("UUID", UUID);
         PlayFabSignIn(UUID);
         DebugLog("Created new account " + UUID);
+    }
+}
+function Init(){
+    if (typeof PlayFab !== 'undefined' && PlayFab.onSDKLoaded) {
+        PlayFab.onSDKLoaded(Start);
+    } else {
+        Start(); 
     }
 }
 function DebugLog(text){
