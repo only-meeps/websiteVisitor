@@ -86,7 +86,7 @@ function PlayFabSignIn(UUID){
         CreateAccount: true
     };
 
-    PlayFabClientSDK.LoginWithCustomID(loginRequest, LoginCallback);
+    PlayFabClientAPI.LoginWithCustomID(loginRequest, LoginCallback);
 }
 function UpdateGameList(list1, list2){
     PlayFabClientAPI.UpdateUserData({
