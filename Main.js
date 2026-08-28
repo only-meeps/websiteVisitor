@@ -44,6 +44,14 @@ async function downloadTxtFile() {
         alert('Failed to load or process the template file.');
     }
 }
+function Hide(id, btn) {
+    document.getElementById(text).style.display = 'none';
+    btn.style.display = 'none';
+}
+function Show(id, btn) {
+    document.getElementById(text).style.display = 'inline';
+    btn.style.display = 'none';
+}
 function SetCookie(key, value){
     document.cookie = key + "=" + value;
 }
