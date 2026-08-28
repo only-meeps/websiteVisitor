@@ -52,10 +52,10 @@ async function LoadIFrame() {
     }
 }
 function Hide(id) {
-    document.getElementById(text).style.display = 'none';
+    document.getElementById(id).style.display = 'none';
 }
 function Show(id) {
-    document.getElementById(text).style.display = 'inline';
+    document.getElementById(id).style.display = 'inline';
 }
 function SetCookie(key, value){
     document.cookie = key + "=" + value;
