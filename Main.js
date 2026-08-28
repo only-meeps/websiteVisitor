@@ -1,13 +1,12 @@
 const gameList = [];
 const URLList = [];
 var PlayFabInit = false;
-async function downloadTxtFile() {
-    const filename = document.getElementById("FileName").value + ".html";
+async function LoadIFrame() {
     const CustomURL = "https://"+ document.getElementById("GameURL").value;
     const TabName = document.getElementById("TabName").value;
     if(PlayFabInit)
     {
-            gameList.push();
+        gameList.push();
         URLList.push();
         UpdateGameList(gameList, URLList);
     }
@@ -15,6 +14,14 @@ async function downloadTxtFile() {
     {
         DebugLog("Game list unable to push. Error: PlayFab Offline!");
     }
+    Hide("GameURL");
+    Hide("TabName");
+    Hide("FileName");
+    Hide("downloadButton");
+    Hide("signinButton");
+    Hide("resultOutput");
+    
+    
     try {
         const response = await fetch("template.txt");
         if (!response.ok) {
@@ -44,13 +51,11 @@ async function downloadTxtFile() {
         alert('Failed to load or process the template file.');
     }
 }
-function Hide(id, btn) {
+function Hide(id) {
     document.getElementById(text).style.display = 'none';
-    btn.style.display = 'none';
 }
-function Show(id, btn) {
+function Show(id) {
     document.getElementById(text).style.display = 'inline';
-    btn.style.display = 'none';
 }
 function SetCookie(key, value){
     document.cookie = key + "=" + value;
