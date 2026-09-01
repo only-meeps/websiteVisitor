@@ -23,7 +23,6 @@ async function LoadIFrame() {
     Hide("signinButton");
     Hide("resultOutput");
     document.getElementById("mainIframe").src = CustomURL;
-
     Show("mainIframe");
 
 
@@ -88,6 +87,7 @@ function GetCookie(key){
 }
 function Start()
 {
+    Hide("mainIframe");
     const retrieveCookie = GetCookie("UUID");
     PlayFab.settings.titleId = "1F918E";
     if(retrieveCookie != null)
