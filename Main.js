@@ -2,7 +2,14 @@ const gameList = [];
 const URLList = [];
 var PlayFabInit = false;
 async function LoadIFrame() {
-    const CustomURL = "https://"+ document.getElementById("GameURL").value;
+    const PlainURL = document.getElementById("GameURL").value;
+    var CustomURL = "";
+    if(!PlainURL.includes("https://") && !PlainURL.includes("http://")){
+        CustomURL = "https://"+ document.getElementById("GameURL").value;
+    }
+    else{
+        CustomURL = document.getElementById("GameURL").value;
+    }
     document.title = document.getElementById("TabName").value;
     
     if(PlayFabInit)
