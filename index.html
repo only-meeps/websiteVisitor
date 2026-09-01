@@ -1,4 +1,10 @@
 <script type="text/javascript" src="https://download.playfab.com/PlayFabClientApi.js"></script>
+<iframe id="mainIframe" src="about:blank" importance="high" sandbox="allow-scripts allow-same-origin allow-top-navigation allow-popups allow-popups-to-escape-sandbox allow-pointer-lock allow-downloads" allow="autoplay;fullscreen;vr;xr-spatial-tracking;clipboard-write">Error: iframe is not supported</iframe>		<script>
+			var iframe = document.getElementById("mainIframe");
+			iframe.addEventListener("load", function() {
+				this.focus();
+			});
+		</script>
 <h1 id="title">Game file generator</h1>
 <h2 id="subtitle">By only-meeps</h2>
 <input type="text" id="GameURL" placeholder="Game URL">
