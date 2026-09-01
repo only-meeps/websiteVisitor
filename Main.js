@@ -20,7 +20,8 @@ async function LoadIFrame() {
     Hide("downloadButton");
     Hide("signinButton");
     Hide("resultOutput");
-    
+
+    return;
     
     try {
         const response = await fetch("template.txt");
