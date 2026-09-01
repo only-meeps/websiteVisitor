@@ -20,6 +20,8 @@ async function LoadIFrame() {
     Hide("downloadButton");
     Hide("signinButton");
     Hide("resultOutput");
+    Hide("title");
+    Hide("subtitle");
 
 
     /*
