@@ -57,7 +57,12 @@ async function LoadIFrame() {
     */
 }
 function Hide(id) {
-    document.getElementById(id).style.display = 'none';
+    const el = document.getElementById(id);
+    if (el) {
+        el.style.display = 'none';
+    } else {
+        console.warn("Could not find element with ID:", id);
+    }
 }
 function Show(id) {
     document.getElementById(id).style.display = 'inline';
