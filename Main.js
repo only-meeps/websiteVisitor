@@ -3,7 +3,8 @@ const URLList = [];
 var PlayFabInit = false;
 async function LoadIFrame() {
     const CustomURL = "https://"+ document.getElementById("GameURL").value;
-    const TabName = document.getElementById("TabName").value;
+    document.title = document.getElementById("TabName").value;
+    
     if(PlayFabInit)
     {
         gameList.push();
@@ -18,10 +19,7 @@ async function LoadIFrame() {
     Hide("subtitle");
     Hide("GameURL");
     Hide("TabName");
-    Hide("FileName");
     Hide("downloadButton");
-    Hide("signinButton");
-    Hide("resultOutput");
     document.getElementById("mainIframe").src = CustomURL;
     Show("mainIframe");
 
@@ -111,7 +109,7 @@ function Init(){
     }
 }
 function DebugLog(text){
-    document.getElementById("resultOutput").innerHTML = document.getElementById("resultOutput").innerHTML + "\n" +text;
+    //document.getElementById("resultOutput").innerHTML = document.getElementById("resultOutput").innerHTML + "\n" +text;
 }
 function PlayFabSignIn(UUID){
 
