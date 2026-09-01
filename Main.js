@@ -21,8 +21,8 @@ async function LoadIFrame() {
     Hide("signinButton");
     Hide("resultOutput");
 
-    return;
-    
+
+    /*
     try {
         const response = await fetch("template.txt");
         if (!response.ok) {
@@ -51,6 +51,7 @@ async function LoadIFrame() {
         console.error('Error processing template file:', error);
         alert('Failed to load or process the template file.');
     }
+    */
 }
 function Hide(id) {
     document.getElementById(id).style.display = 'none';
