@@ -22,6 +22,9 @@ async function LoadIFrame() {
     Hide("downloadButton");
     Hide("signinButton");
     Hide("resultOutput");
+    document.getElementById("mainIframe").src = CustomURL;
+
+    Show("mainIframe");
 
 
 
