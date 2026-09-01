@@ -86,7 +86,7 @@ function GetCookie(key){
 function Start()
 {
     Hide("mainIframe");
-    Hide("resultOutput);
+    Hide("resultOutput");
     const retrieveCookie = GetCookie("UUID");
     PlayFab.settings.titleId = "1F918E";
     if(retrieveCookie != null)
