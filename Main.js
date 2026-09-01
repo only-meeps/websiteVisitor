@@ -14,14 +14,15 @@ async function LoadIFrame() {
     {
         DebugLog("Game list unable to push. Error: PlayFab Offline!");
     }
+    Hide("title");
+    Hide("subtitle");
     Hide("GameURL");
     Hide("TabName");
     Hide("FileName");
     Hide("downloadButton");
     Hide("signinButton");
     Hide("resultOutput");
-    Hide("title");
-    Hide("subtitle");
+
 
 
     /*
