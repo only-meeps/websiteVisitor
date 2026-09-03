@@ -106,8 +106,13 @@ function SaveHistory(){
     localStorage.setItem("URLList", JSON.stringify(URLList));
 }
 function LoadHistory(){
+    try{   
     const history = localStorage.getItem("URLList");
     URLList = JSON.parse(history);
+    }
+    catch{
+        
+    }
 }
 function Start()
 {
