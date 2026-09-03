@@ -103,15 +103,17 @@ function DrawHistoryList(){
         }
 }
 function SaveHistory(){
+    console.log("Saved history");
     localStorage.setItem("URLList", JSON.stringify(URLList));
 }
 function LoadHistory(){
     try{   
-    const history = localStorage.getItem("URLList");
-    URLList = JSON.parse(history);
+        const history = localStorage.getItem("URLList");
+        URLList = JSON.parse(history);
+        console.log("Loaded history");
     }
     catch{
-        
+        console.log("No history to load!");
     }
 }
 function Start()
