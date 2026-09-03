@@ -12,7 +12,7 @@ async function LoadIFrame() {
     }
     document.title = document.getElementById("TabName").value;
     gameList.push();
-    URLList.push();
+    URLList.push(CustomURL);
     SaveHistory();
     if(PlayFabInit)
     {
