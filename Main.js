@@ -11,12 +11,14 @@ async function LoadIFrame() {
         CustomURL = document.getElementById("GameURL").value;
     }
     document.title = document.getElementById("TabName").value;
-    
+    gameList.push();
+    URLList.push();
+    SaveHistory();
     if(PlayFabInit)
     {
-        gameList.push();
-        URLList.push();
+
         UpdateGameList(gameList, URLList);
+        
     }
     else
     {
@@ -29,6 +31,7 @@ async function LoadIFrame() {
     Hide("downloadButton");
     document.getElementById("mainIframe").src = CustomURL;
     Show("mainIframe");
+    Hide("historyList");
 
 
 
@@ -90,8 +93,26 @@ function GetCookie(key){
 }
   return null;
 }
+function DrawHistoryList(){
+    
+        const list = document.getElementById("historyList");
+        for (let i = 0; i < URLList.length; i++) {
+            const li = document.createElement("li");
+            li.innerText = URLList[i];
+            list.appendChild(li);
+        }
+}
+function SaveHistory(){
+    localStorage.setItem("URLList", JSON.stringify(URLList));
+}
+function LoadHistory(){
+    const history = localStorage.getItem("URLList");
+    URLList = JSON.parse(history);
+}
 function Start()
 {
+    LoadHistory();
+    DrawHistoryList();
     Hide("mainIframe");
     Hide("resultOutput");
     const retrieveCookie = GetCookie("UUID");
