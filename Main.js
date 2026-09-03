@@ -103,7 +103,7 @@ function DrawHistoryList(){
         }
 }
 function SaveHistory(){
-    console.log("Saved history");
+    console.log("Saved history: " + JSON.stringify(URLList));
     localStorage.setItem("URLList", JSON.stringify(URLList));
 }
 function LoadHistory(){
